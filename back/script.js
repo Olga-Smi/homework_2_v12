@@ -31,7 +31,7 @@ webserver.get("/home", (req, res) => {
       regexUpper.test(password) &&
       regexNum.test(password)
     ) {
-      res.send("Реистрация на сайте прошла успешно!");
+      res.send(`${login}, Ваша регистрация на сайте прошла успешно!`);
     } else if (login.length < 4 && password.length < 6) {
       res.send(
        `<!DOCTYPE html>
@@ -46,11 +46,11 @@ webserver.get("/home", (req, res) => {
                         <form action="/home" method = "get">
                               <div> 
                               <p>Логин должен содержать не менее 4 символов </p>
-                              <input type="text" name="login" id="name" placeholder="Введено: ${login}"> 
+                              <input type="text" name="login" id="name" placeholder="Неверное значение: ${login}"> 
                               </div>
                                <div> 
                                <p>Пароль должен содержать не менее 6 символов </p>
-                               <input type="password" name="password" id="password" placeholder="Введено: ${password}"> 
+                               <input type="password" name="password" id="password" placeholder="Неверное значение: ${password}"> 
                                </div> 
                                <input type="submit" value="Зарегистрироваться">
                           </form>
@@ -71,13 +71,13 @@ webserver.get("/home", (req, res) => {
                           <form action="/home" method = "get">
                                 <div> 
                                 <p>Логин должен содержать не менее 4 символов</p>
-                                <input type="text" name="login" id="name" placeholder="Введено: ${login}"> 
+                                <input type="text" name="login" id="name" placeholder="Неверное значение: ${login}"> 
                                 </div>
                                  <div> 
-                                 <input type="password" name="password" id="password" placeholder="Введенный ранее пароль корректен"> 
+                                 <input type="password" name="password" id="password" value="${password}"> 
                                  </div> 
                                  <input type="submit" value="Зарегистрироваться">
-                          /form>
+                          </form>
                     </body>
         </html>`
       );
@@ -94,11 +94,11 @@ webserver.get("/home", (req, res) => {
                      <body>
                             <form action="/home" method = "get">
                                 <div> 
-                                <input type="text" name="login" id="name" placeholder="Введенный логин корректен"> 
+                                <input type="text" name="login" id="name" value="${login}"> 
                                 </div>
                                 <div>
                                 <p>Пароль должен содержать не менее 6 символов</p>
-                                <input type="password" name="password" id="password" placeholder="Введено: ${password}">
+                                <input type="password" name="password" id="password" placeholder="Неверное значение: ${password}">
                                 </div>
                                 <input type="submit" value="Зарегистрироваться">
                             </form>
@@ -118,7 +118,7 @@ webserver.get("/home", (req, res) => {
                      <body>
                           <form action="/home" method = "get">
                                 <div>
-                                <input type="text" name="login" id="name" placeholder="Введенный логин корректен">
+                                <input type="text" name="login" id="name" value="${login}">
                                 </div>
                                 <div>
                                 <p>Пароль должен содержать не хотя бы 1 заглавную букву и хотя бы 1 цифру</p>
